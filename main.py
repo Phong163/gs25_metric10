@@ -110,7 +110,7 @@ class CustomerTracker:
                     zone_state["total_time"] = 0
                 else:
                     out_time = time.time() - zone_state["end_time"]
-                    if out_time > 30:  # chỉ log nếu > 30s
+                    if out_time > 10:  # chỉ log nếu > 30s
                         date_time = datetime.now(pytz.timezone("Asia/Ho_Chi_Minh")).strftime("%d%m%Y%H%M")
                         logger.info(f"Camera {self.camera_id}, Zone {idx}, Total_time: {zone_state["total_time"]:.1f}s")
                         if self.send_api:
