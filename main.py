@@ -130,7 +130,7 @@ class CustomerTracker:
             if self.show_video:
                 cv2.polylines(annotated_frame, [np.array(pts, dtype=int)], True, color, 2)
                 cv2.putText(annotated_frame,
-                            f"{zone_state["total_time"]:.1f}s",
+                            f"{zone_state['total_time']:.1f}s",
                             (x_min, y_min - 10),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.7, color, 2)
 
