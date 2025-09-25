@@ -75,6 +75,7 @@ class CustomerTracker:
     def process_frame(self, frame):
         self.current_frame += 1
         annotated_frame = frame.copy()
+        date_time = datetime.now(pytz.timezone("Asia/Ho_Chi_Minh")).strftime("%d%m%Y%H%M")
 
         for idx, zone in enumerate(self.zones):
             pts = [(int(x * self.width), int(y * self.height)) for x, y in zone]
