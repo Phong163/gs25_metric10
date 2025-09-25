@@ -101,6 +101,13 @@ class CustomerTracker:
             elif label == 1 and zone_state["status"] == "Occupied":
                 zone_state["total_time"] = time.time() - zone_state["start_time"]
                 zone_state["end_time"] = time.time()
+                if zone_state["total_time"] > 7200 and self.send_api:
+                        send_time_to_kafka(self.box_id, self.zone_id, self.cam_id, date_time, zone_state["total_time"])
+                        # reset state
+                        zone_state["status"] = "Empty"
+                        zone_state["start_time"] = 0
+                        zone_state["total_time"] = 0
+                    
                 
             elif label == 0 and zone_state["status"] == "Occupied":
                 # chuyển từ Occupied -> Empty
