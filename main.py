@@ -112,7 +112,7 @@ class CustomerTracker:
                     out_time = time.time() - zone_state["end_time"]
                     if out_time > 10:  # chỉ log nếu > 30s
                         date_time = datetime.now(pytz.timezone("Asia/Ho_Chi_Minh")).strftime("%d%m%Y%H%M")
-                        logger.info(f"Camera {self.camera_id}, Zone {idx}, Total_time: {zone_state["total_time"]:.1f}s")
+                      
                         if self.send_api:
                             send_time_to_kafka(self.box_id, self.zone_id, self.cam_id, date_time, zone_state["total_time"])
                         # reset state
