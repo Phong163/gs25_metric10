@@ -31,9 +31,8 @@ RUN pip3 install numpy
 COPY requirements.txt .
 RUN pip3 install -r requirements.txt
 
-# Cài deep-person-reid sau (nó cần numpy đã có sẵn)
-RUN pip3 install git+https://github.com/KaiyangZhou/deep-person-reid.git
-
+ENV TZ=Asia/Ho_Chi_Minh
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # Sao chép mã nguồn
 WORKDIR /app
 COPY . .
